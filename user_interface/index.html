@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OsloMunchFa - گالری هنر فارسی</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Intro screen -->
+  <div id="intro" class="intro">
+    <div class="intro-background"></div>
+    <div class="intro-content">
+      <h1>سلام! به موزه ادوارد مونک در شهر اسلو خوش آمدید.</h1>
+      <button onclick="startGallery()">شروع</button>
+    </div>
+  </div>
+
+  <!-- Floor Selection -->
+  <div id="floor-select" class="hidden">
+    <header>
+      <button class="back-button" onclick="goBack()">←</button>
+      <h1>طبقات موزه</h1>
+    </header>
+
+
+    <div class="floor-options">
+      <div class="floor" onclick="enterGallery('floor4')" style="background-image: url('assets/images/floor_1.jpg');">
+        <div class="floor-overlay">
+          <h2>
+            ادوارد مونک بی‌نهایت
+          </h2>
+          <h3> (طبقه شماره چهار) </h3>
+        </div>
+      </div>
+
+      <div class="floor" onclick="enterGallery('floor6')" style="background-image: url('assets/images/floor_2.jpg');">
+        <div class="floor-overlay">
+          <h2>ادوارد مونک باشکوه
+          </h2>
+          <h3>(طبقه شماره پنجم) </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floor Description (for example: floor4) -->
+  <div id="floor4-description" class="hidden">
+    <header>
+      <button class="back-button" onclick="goBack()">←</button>
+      <h1>ادوارد مونک</h1>
+    </header>
+
+    <div class="floor-container">
+      <img src="assets/images/intro_1.jpg" alt="Edvard Munch Intro" class="floor-banner" />
+
+      <div class="floor-description-content">
+        <p>
+          سفری به دنیای آثار متنوع و بی‌پایان ادوارد مونک آغاز کنید.
+          در این مجموعه با داستان‌های آثار مشهوری چون «جیغ» و «مادونا» آشنا خواهید شد
+          و همچنین با آثار کمتر شناخته‌شده‌ای روبرو می‌شوید که دیدگاه‌های تازه‌ای به دنیای هنری مونک ارائه می‌دهند.
+          علاوه بر مورخان هنری موزه، هنرمندانی چون «تریسی امین»، نویسنده «فردریک هویِر»
+          و فعال اقلیمی «پنلوپه لیا» نیز به روایت کمک خواهند کرد.
+        </p>
+
+
+        <div class="start-row">
+          <button onclick="enterFloorGrid('floor4')">شروع</button>
+          <span class="duration">(۴۰ دقیقه)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Gallery screen -->
+  <div id="gallery" class="hidden">
+    <header>
+      <button class="back-button" onclick="goBack()">←</button>
+      <h1>ادوارد مونک بی‌نهایت</h1>
+    </header>
+
+    <!-- Empty container to be filled dynamically -->
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- JavaScript will inject items here -->
+    </div>
+  </div>
+
+
+  <div id="art-detail" class="hidden artwork-page">
+    <header>
+      <button class="back-button" onclick="goBack()">←</button>
+      <h1 id="art-title">عنوان اثر</h1>
+      <a id="pdf-link" class="pdf-button" href="#" target="_blank">متن</a>
+
+    </header>
+
+    <div class="artwork-body">
+      <img id="art-image" src="" alt="اثر هنری" />
+      <audio id="art-audio" controls src=""></audio>
+
+      <div class="art-credits">
+        <p>«Edvard Munch, Aske. Photo © Munchmuseet / photographers name (if stated)».</p>
+        <p>Audio: Kamand Shayegan, Originally read by Fredrik Høyer</p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+
+
+  <footer id="legal-footer" class="legal-footer">
+    <p>
+      این وب‌سایت به‌صورت مستقل و غیرتجاری ساخته شده است و هدف آن ارائه‌ی تجربه‌ای فرهنگی و آموزشی برای فارسی‌زبانان
+      علاقه‌مند به آثار ادوارد مونک می‌باشد.
+    </p>
+  </footer>
+
+</body>
+
+</html>

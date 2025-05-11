@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+ENV/
+env/
+.venv/
+.yaml
+.yml
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Other
+*.log
+config.yaml  # If it contains secrets or local pathsconfig.yaml
+config.yaml
