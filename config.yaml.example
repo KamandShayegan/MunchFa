@@ -1,8 +1,0 @@
-# This file contains the config paths for POME.
-
-api-key: "API_KEY_HERE"
-
-raw_audio_dir: "***/assets/audios/raw"
-en_dir: "***/assets/transcriptions/en"
-fa_dir: "***/assets/transcriptions/fa"
-pdf_dir: "***user_interface/assets/pdfs"
