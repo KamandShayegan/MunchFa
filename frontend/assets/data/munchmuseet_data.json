@@ -16,7 +16,26 @@
     "audio": "assets/audio/final/final_audio_2.mp3",
     "photographer_name": "Ove Kvavik",
     "original_reader_s": "Fredrik Høyer, with Ivo de Figueiredo"
+  },
+  {
+    "title": "خون‌آشام",
+    "original_name": "Vampire",
+    "year": "1916–1918",
+    "image": "assets/images/art_3.jpg",
+    "audio": "assets/audio/final/final_audio_3.mp3",
+    "photographer_name": "Ove Kvavik",
+    "original_reader_s": "Fredrik Høyer"
+  },
+  {
+      "title": "روز پسین",
+      "original_name": "The Day After",
+      "year": "1894",
+      "image": "assets/images/art_4.jpg",
+      "audio": "assets/audio/final/final_audio_4.mp3",
+      "photographer_name": "Ove Kvavik",
+      "original_reader_s": "Fredrik Høyer"
   }
+    
   
   
   
