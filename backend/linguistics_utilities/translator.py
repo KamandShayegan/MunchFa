@@ -23,13 +23,13 @@ logging.info("OpenAI client initialized.")
 
 def translate(english_text: str) -> str:
     """
-    Translates English text to fluent Persian using GPT-4o.
+    Translates English text to fluent Irish using GPT-4o.
 
     Args:
         english_text (str): The input English transcript.
 
     Returns:
-        str: The translated Persian text.
+        str: The translated Irish text.
     """
     logging.info("Starting translation...")
     
@@ -37,8 +37,8 @@ def translate(english_text: str) -> str:
         {
             "role": "system",
             "content": (
-                "You are a professional Persian translator. "
-                "Translate this English transcript into fluent Persian, preserving structure, quotations, and tone. "
+                "You are a professional Irish translator. "
+                "Translate this English transcript into fluent Irish (Gaeilge), preserving structure, quotations, and tone. "
                 "Avoid literal translation."
             )
         },

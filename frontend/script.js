@@ -138,7 +138,84 @@ function openArtwork(index) {
   pdfLink.href = `assets/pdfs/transc_fa_${index + 1}.pdf`;
 }
 
-
-
 // Load gallery on DOM load
 document.addEventListener("DOMContentLoaded", loadGallery);
+
+let mediaRecorder;
+let audioChunks = [];
+let isPaused = false;
+let stream;
+
+const recordButton = document.getElementById('recordButton');
+const pauseButton = document.getElementById('pauseButton');
+const stopButton = document.getElementById('stopButton');
+const status = document.getElementById('status');
+
+recordButton.addEventListener('click', async () => {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+
+        mediaRecorder.addEventListener('dataavailable', event => {
+            audioChunks.push(event.data);
+        });
+
+        mediaRecorder.addEventListener('stop', async () => {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/m4a' });
+            const formData = new FormData();
+            formData.append('audio', audioBlob, 'audio_0.m4a');
+
+            status.textContent = 'Processing recording...';
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    status.textContent = 'Recording processed successfully!';
+                } else {
+                    status.textContent = 'Error processing recording';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                status.textContent = 'Error processing recording';
+            }
+        });
+
+        mediaRecorder.start();
+        recordButton.style.display = 'none';
+        pauseButton.style.display = 'block';
+        stopButton.style.display = 'block';
+        status.textContent = 'Recording...';
+    } catch (error) {
+        console.error('Error accessing microphone:', error);
+        status.textContent = 'Error accessing microphone';
+    }
+});
+
+pauseButton.addEventListener('click', () => {
+    if (!isPaused) {
+        mediaRecorder.pause();
+        pauseButton.textContent = 'Resume';
+        status.textContent = 'Paused';
+        isPaused = true;
+    } else {
+        mediaRecorder.resume();
+        pauseButton.textContent = 'Pause';
+        status.textContent = 'Recording...';
+        isPaused = false;
+    }
+});
+
+stopButton.addEventListener('click', () => {
+    mediaRecorder.stop();
+    stream.getTracks().forEach(track => track.stop());
+    recordButton.style.display = 'block';
+    pauseButton.style.display = 'none';
+    stopButton.style.display = 'none';
+    pauseButton.textContent = 'Pause';
+    isPaused = false;
+});

@@ -8,42 +8,59 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s"
 )
 
-def make_pdf(persian_text: str, output_path: str):
+def make_pdf(irish_text: str, summary_text: str, output_path: str):
     """
-    Generates a PDF with Persian RTL layout from the given text.
+    Generates a PDF with Irish text layout and consultation summary.
     
     Args:
-        persian_text (str): The Persian text content to render.
+        irish_text (str): The Irish text content to render.
+        summary_text (str): The consultation summary to include.
         output_path (str): Full path where the PDF should be saved.
     """
     logging.info(f"Generating PDF at: {output_path}")
 
     try:
         # Convert line breaks to <br> for HTML rendering
-        content_html = persian_text.replace('\n', '<br>')
+        content_html = irish_text.replace('\n', '<br>')
+        summary_html = summary_text.replace('\n', '<br>')
 
-        # HTML content with proper styling and font
+        # HTML content with proper styling
         html_template = f"""
         <!DOCTYPE html>
-        <html lang="fa" dir="rtl">
+        <html lang="ga">
         <head>
           <meta charset="utf-8">
           <style>
-            @font-face {{
-              font-family: Vazirmatn;
-              src: local("Vazirmatn"), url("https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@latest/dist/Vazirmatn-Regular.woff2") format("woff2");
-            }}
             body {{
-              font-family: Vazirmatn, sans-serif;
-              direction: rtl;
-              text-align: right;
+              font-family: Arial, sans-serif;
               font-size: 16px;
               line-height: 2;
               padding: 2rem;
             }}
+            .summary {{
+              background-color: #f5f5f5;
+              padding: 1rem;
+              margin: 1rem 0;
+              border-left: 4px solid #4CAF50;
+            }}
+            h1, h2 {{
+              color: #333;
+              margin-top: 2rem;
+            }}
+            .summary h2 {{
+              color: #4CAF50;
+              margin-top: 0;
+            }}
           </style>
         </head>
         <body>
+          <h1>Achoimre ar an gComhairle</h1>
+          <div class="summary">
+            <h2>Eolas Tábhachtach</h2>
+            {summary_html}
+          </div>
+          
+          <h1>Taifead Iomlán na Comhairle</h1>
           <p>{content_html}</p>
         </body>
         </html>
