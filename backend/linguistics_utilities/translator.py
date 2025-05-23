@@ -38,7 +38,7 @@ def translate(english_text: str) -> str:
             "role": "system",
             "content": (
                 "You are a professional Persian translator. "
-                "Translate this English transcript into fluent Persian, preserving structure, quotations, and tone. "
+                "Translate this English transcript into fluent Irish, preserving structure, quotations, and tone. "
                 "Avoid literal translation."
             )
         },
